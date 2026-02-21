@@ -2,10 +2,21 @@
 // Tip: Create two runners - slow and fast
 // (The slow runner moves one node at a time, the fast runner moves two nodes at a time. When the fast runner is at the very last node, then the slow runner will eventually be in the middle of the list. You can then return its value)
 
-const SLL = require('../lib/SLL');
+const SLL = require("../lib/SLL");
 
 function findMiddle(list) {
   // your code here
+  let slowRunner = list.getHead();
+  let fastRunner = list.getHead();
+  let middleNumber = null;
+
+  while (slowRunner !== null && fastRunner.next !== null) {
+    slowRunner = slowRunner.next;
+    fastRunner = fastRunner.next.next;
+  }
+  middleNumber = slowRunner.data;
+
+  return middleNumber;
 }
 
 const list = new SLL();
